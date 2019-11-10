@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "parcel public/home.html",
-    "build": "parcel build public/home.html --public-url './"
+    "dev": "parcel public/*.html ",
+    "build": "parcel build public/*.html   --public-url './"
   },
   "keywords": [],
   "author": "",
