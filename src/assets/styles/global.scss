@@ -17,12 +17,10 @@ body {
 
 main {
     min-height: 100vh;
-
-
 }
 
 .Main {
-    background-image: url(../static/background.jpg);
+    background-image: url(https://res.cloudinary.com/poolzmooth/image/upload/v1574543906/Portfolio/sunset-favorite.jpg);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -262,6 +260,7 @@ main {
 
 }
 
+
 .Projects {
     height: calc(100vh - 100px);
     width: 80%;
@@ -274,6 +273,34 @@ main {
     &__header {
         h1 {
             margin: 0;
+            letter-spacing: .5rem;
+            text-transform: capitalize;
+        }
+    }
+
+    &__footer {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        align-content: center;
+        // justify-content: space-between;
+
+        span {
+            grid-column: span 2;
+            margin: 1rem 0;
+            text-transform: capitalize;
+            color: $color-accent;
+
+        }
+
+        .tools {
+            &__items {
+                display: flex;
+
+                li {
+                    list-style: none;
+                    margin: 0rem 1rem;
+                }
+            }
         }
     }
 
@@ -294,10 +321,9 @@ main {
     }
 
     &-item {
-
         display: inline-block;
-        width: 200px;
-        height: 250px;
+        width: 250px;
+        height: 300px;
         border-radius: 20px;
         background: palevioletred;
         overflow: hidden;
@@ -306,6 +332,57 @@ main {
         transition: 450ms all;
         transform-origin: center left;
         position: relative;
+
+        &__img {
+            width: 250px;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        &__play {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        &__details {
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
+            font-size: 10px;
+            opacity: 0;
+            transition: 450ms opacity;
+            padding: 10px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+
+
+
+            &--title {
+                font-size: 1.2rem;
+                color: $color-white;
+            }
+
+            &--subtitle {
+                color: $color-accent;
+                display: none;
+            }
+
+            &:hover {
+                opacity: 1;
+                display: flex;
+                justify-content: flex-end;
+                flex-direction: column;
+            }
+
+
+            img {
+                width: 40px;
+            }
+        }
+
     }
 }
 
@@ -323,51 +400,7 @@ main {
     opacity: 1;
 }
 
-.carousel-item__img {
-    width: 200px;
-    height: 250px;
-    object-fit: cover;
-}
 
-.carousel-item__details {
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
-    font-size: 10px;
-    opacity: 0;
-    transition: 450ms opacity;
-    padding: 10px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-}
-
-.carousel-item__details>div {
-    /* display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center; */
-}
-
-.carousel-item__details p {
-    color: white;
-    font-size: 14px;
-    margin: 0;
-    /* position: absolute; */
-}
-
-.carousel-item__details img {
-    width: 30px;
-    /* height: 30px; */
-    /* position: absolute; */
-}
-
-.carousel-item__details:hover {
-    opacity: 1;
-    display: flex;
-    align-items: end;
-    flex-direction: column;
-}
 
 @keyframes shake {
 
