@@ -4,13 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "parcel public/*.html ",
+    "dev": "parcel public/*.html --host 0.0.0.0 ",
     "build": "parcel build public/*.html --public-url='./'"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "flickity": "^2.2.1",
     "normalize.css": "^8.0.1",
     "parcel-bundler": "^1.12.3",
     "sass": "^1.23.0"
