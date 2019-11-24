@@ -27,7 +27,3 @@ if (window.location.pathname === "/portfolio.html") {
     window.location.replace("mailto:paulclindo@gmail.com?body=Hey, Paul!");
   };
 }
-
-// if
-// if (window.location.pathname === "/contact.html") {
-// }
