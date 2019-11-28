@@ -1,10 +1,8 @@
 @import url("https://fonts.googleapis.com/css?family=Josefin+Sans:400,600|Raleway:400,600&display=swap");
 
-$breakpoints: (
-  sm: 767px,
+$breakpoints: (sm: 767px,
   md: 992px,
-  lg: 1200px
-);
+  lg: 1400px);
 
 @mixin break($size) {
   @media (max-width: map-get($breakpoints, $size)) {
@@ -16,8 +14,10 @@ $color-white: #fbfaf8;
 $color-dark: #090c08;
 $color-accent: #ff6464;
 
-$font-josefina: "Josefin Sans", sans-serif;
-$font-raleway: "Raleway", sans-serif;
+$font-josefina: "Josefin Sans",
+sans-serif;
+$font-raleway: "Raleway",
+sans-serif;
 
 body {
   margin: 0;
@@ -46,9 +46,11 @@ main {
   justify-content: space-between;
   margin: 0 2em;
   align-items: center;
+
   @include break(sm) {
     margin: 0 1em;
   }
+
   &__logo {
     img {
       @include break(sm) {
@@ -70,10 +72,12 @@ main {
     height: inherit;
     line-height: 6em;
     list-style: none;
+
     @include break(sm) {
       margin: auto 1em;
       display: none;
     }
+
     &:nth-child(3) {
       @include break(sm) {
         display: block;
@@ -84,6 +88,7 @@ main {
       display: block;
       color: $color-white;
       text-decoration: none;
+
       &:hover {
         animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
         transform: translate3d(0, 0, 0);
@@ -113,6 +118,11 @@ main {
       width: 1px;
       height: 50px;
     }
+
+    @include break(lg) {
+      width: 2px;
+      height: 80px;
+    }
   }
 
   &::after {
@@ -125,6 +135,11 @@ main {
     @include break(sm) {
       width: 1px;
       height: 50px;
+    }
+
+    @include break(lg) {
+      width: 2px;
+      height: 80px;
     }
   }
 
@@ -168,7 +183,11 @@ main {
     align-self: flex-end;
 
     @include break(sm) {
-      font-size: 2rem;
+      font-size: 2em;
+    }
+
+    @include break(lg) {
+      font-size: 2.5em;
     }
   }
 
@@ -182,6 +201,10 @@ main {
       font-size: 1rem;
       margin-bottom: 1rem;
     }
+
+    @include break(lg) {
+      font-size: 1.5em;
+    }
   }
 
   &__summary {
@@ -189,6 +212,10 @@ main {
     align-self: center;
     line-height: 1.5;
     font-weight: 300;
+
+    @include break(lg) {
+      font-size: 1em;
+    }
   }
 }
 
@@ -202,6 +229,7 @@ main {
   grid-template-rows: repeat(3, auto);
   padding: 1.5em 2em;
   background: rgba(248, 255, 244, 0.16);
+
   @include break(sm) {
     display: none;
   }
@@ -231,7 +259,7 @@ main {
       bottom: 30%;
     }
 
-    & > svg {
+    &>svg {
       background: $color-white;
       padding: 10px;
       border-radius: 3em;
@@ -244,6 +272,7 @@ main {
     }
   }
 }
+
 a#contact-button {
   color: $color-dark;
   text-decoration: none;
@@ -254,6 +283,7 @@ a#contact-button {
     height: auto;
   }
 }
+
 .button {
   cursor: pointer;
   height: fit-content;
@@ -276,13 +306,11 @@ a#contact-button {
     // background: linear-gradient(to right, #ffeeee, #ddefbb);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
-    background-image: linear-gradient(
-      to right,
-      #ffeeee,
-      #ffeeee,
-      #ffeeee,
-      #f1f1f1
-    );
+    background-image: linear-gradient(to right,
+        #ffeeee,
+        #ffeeee,
+        #ffeeee,
+        #f1f1f1);
     // box-shadow: 0 4px 15px 0 rgba(49, 196, 190, 0.75);
 
     &:hover {
@@ -312,6 +340,7 @@ a#contact-button {
   justify-content: space-evenly;
   align-items: center;
   text-align: center;
+
   @include break(sm) {
     width: 75%;
     justify-content: flex-around;
@@ -321,6 +350,7 @@ a#contact-button {
     font-size: 4rem;
     font-weight: 700;
     margin: 0;
+
     @include break(sm) {
       font-size: 2em;
     }
@@ -332,6 +362,7 @@ a#contact-button {
 
   &__description {
     font-size: 2rem;
+
     @include break(sm) {
       font-size: 1.1em;
     }
@@ -356,9 +387,15 @@ a#contact-button {
       margin: 0;
       letter-spacing: 0.5rem;
       text-transform: capitalize;
+
       @include break(sm) {
         letter-spacing: 0;
         font-size: 1.3em;
+      }
+
+      @include break(lg) {
+        font-size: 1.5em;
+        letter-spacing: 1px;
       }
     }
   }
@@ -367,6 +404,7 @@ a#contact-button {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     align-content: center;
+
     // justify-content: space-between;
     @include break(sm) {
       grid-template-columns: 1fr;
@@ -377,6 +415,7 @@ a#contact-button {
       margin: 1rem 0;
       text-transform: capitalize;
       color: $color-accent;
+
       @include break(sm) {
         grid-column: span 1;
         margin: 0.5em;
@@ -386,15 +425,18 @@ a#contact-button {
     .tools {
       &__items {
         display: flex;
+
         @include break(sm) {
           flex-wrap: wrap;
         }
+
         li {
           list-style: none;
           margin: 0rem 1rem;
 
           @include break(sm) {
             margin: 0 1rem;
+
             &::after {
               content: "<|> ";
               position: absolute;
@@ -423,6 +465,7 @@ a#contact-button {
 
 .flickity-prev-next-button.previous {
   display: none;
+
   @include break(sm) {
     left: -30px;
   }
@@ -430,6 +473,7 @@ a#contact-button {
 
 .flickity-prev-next-button.next {
   display: none;
+
   @include break(sm) {
     right: -30px;
   }
@@ -461,15 +505,31 @@ a#contact-button {
     transition: 450ms all;
     transform-origin: center left;
     position: relative;
+
     @include break(sm) {
       width: 180px;
       height: 200px;
+    }
+
+    @include break(lg) {
+      width: 200px;
+      height: 220px;
     }
 
     &__img {
       width: 250px;
       height: 300px;
       object-fit: cover;
+
+      @include break(sm) {
+        width: 180px;
+        height: 200px;
+      }
+
+      @include break(lg) {
+        width: 200px;
+        height: 220px;
+      }
     }
 
     &__play {
@@ -480,11 +540,9 @@ a#contact-button {
     }
 
     &__details {
-      background: linear-gradient(
-        to top,
-        rgba(0, 0, 0, 0.9) 0%,
-        rgba(0, 0, 0, 0) 100%
-      );
+      background: linear-gradient(to top,
+          rgba(0, 0, 0, 0.9) 0%,
+          rgba(0, 0, 0, 0) 100%);
       font-size: 10px;
       opacity: 0;
       transition: 450ms opacity;
@@ -519,8 +577,9 @@ a#contact-button {
   }
 }
 
-.carousel-item:hover ~ .carousel-item {
+.carousel-item:hover~.carousel-item {
   transform: translate3d(100px, 0, 0);
+
   @include break(sm) {
     transform: translate3d(0, 0, 0);
   }
@@ -533,12 +592,14 @@ a#contact-button {
 .carousel__container:hover .carousel-item:hover {
   transform: scale(1.5);
   opacity: 1;
+
   @include break(sm) {
     transform: scale(1);
   }
 }
 
 @keyframes shake {
+
   10%,
   90% {
     transform: translate3d(-1px, 0, 0);
