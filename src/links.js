@@ -28,6 +28,15 @@ import Flickity from "flickity";
       groupCells: true,
       autoPlay: true
     });
+
+    if (window.matchMedia("(max-width: 600px)")) {
+      console.log("mathcin media");
+      const $projectContainer = document.getElementById("favorite-projects");
+      let slider = new Flickity($projectContainer, {
+        watchCSS: true
+      });
+    }
+
     const carouselItems = document.getElementsByClassName(
       "carousel-item__play"
     );
