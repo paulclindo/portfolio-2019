@@ -1,8 +1,10 @@
 @import url("https://fonts.googleapis.com/css?family=Josefin+Sans:400,600|Raleway:400,600&display=swap");
 
-$breakpoints: (sm: 767px,
+$breakpoints: (
+  sm: 767px,
   md: 992px,
-  lg: 1400px);
+  lg: 1400px
+);
 
 @mixin break($size) {
   @media (max-width: map-get($breakpoints, $size)) {
@@ -14,10 +16,8 @@ $color-white: #fbfaf8;
 $color-dark: #090c08;
 $color-accent: #ff6464;
 
-$font-josefina: "Josefin Sans",
-sans-serif;
-$font-raleway: "Raleway",
-sans-serif;
+$font-josefina: "Josefin Sans", sans-serif;
+$font-raleway: "Raleway", sans-serif;
 
 body {
   margin: 0;
@@ -113,15 +113,13 @@ main {
     background: $color-white;
     height: 200px;
     margin: auto;
-
-    @include break(sm) {
-      width: 1px;
-      height: 50px;
-    }
-
     @include break(lg) {
       width: 2px;
       height: 80px;
+    }
+    @include break(sm) {
+      width: 1px;
+      height: 45px;
     }
   }
 
@@ -132,14 +130,13 @@ main {
     margin: auto;
     height: 200px;
 
-    @include break(sm) {
-      width: 1px;
-      height: 50px;
-    }
-
     @include break(lg) {
       width: 2px;
       height: 80px;
+    }
+    @include break(sm) {
+      width: 1px;
+      height: 45px;
     }
   }
 
@@ -259,7 +256,7 @@ main {
       bottom: 30%;
     }
 
-    &>svg {
+    & > svg {
       background: $color-white;
       padding: 10px;
       border-radius: 3em;
@@ -306,11 +303,13 @@ a#contact-button {
     // background: linear-gradient(to right, #ffeeee, #ddefbb);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
-    background-image: linear-gradient(to right,
-        #ffeeee,
-        #ffeeee,
-        #ffeeee,
-        #f1f1f1);
+    background-image: linear-gradient(
+      to right,
+      #ffeeee,
+      #ffeeee,
+      #ffeeee,
+      #f1f1f1
+    );
     // box-shadow: 0 4px 15px 0 rgba(49, 196, 190, 0.75);
 
     &:hover {
@@ -522,8 +521,8 @@ a#contact-button {
       object-fit: cover;
 
       @include break(sm) {
-        width: 180px;
-        height: 200px;
+        width: 150px;
+        height: 180px;
       }
 
       @include break(lg) {
@@ -540,9 +539,11 @@ a#contact-button {
     }
 
     &__details {
-      background: linear-gradient(to top,
-          rgba(0, 0, 0, 0.9) 0%,
-          rgba(0, 0, 0, 0) 100%);
+      background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.9) 0%,
+        rgba(0, 0, 0, 0) 100%
+      );
       font-size: 10px;
       opacity: 0;
       transition: 450ms opacity;
@@ -577,11 +578,11 @@ a#contact-button {
   }
 }
 
-.carousel-item:hover~.carousel-item {
+.carousel-item:hover ~ .carousel-item {
   transform: translate3d(100px, 0, 0);
 
   @include break(sm) {
-    transform: translate3d(0, 0, 0);
+    transform: translate3d(50px, 0, 0);
   }
 }
 
@@ -599,7 +600,6 @@ a#contact-button {
 }
 
 @keyframes shake {
-
   10%,
   90% {
     transform: translate3d(-1px, 0, 0);
