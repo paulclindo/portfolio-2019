@@ -17,7 +17,12 @@ import Flickity from "flickity";
       window.location.replace(socialLinks[i]);
     };
   }
-
+  if (window.matchMedia("(max-width: 500px)")) {
+    const $projectContainer = document.getElementById("favorite-projects");
+    let slider = new Flickity($projectContainer, {
+      watchCSS: true
+    });
+  }
   if (window.location.pathname === "/portfolio.html") {
     const $projectContainer = document.getElementById("favorite-projects");
     let slider = new Flickity($projectContainer, {
@@ -28,6 +33,7 @@ import Flickity from "flickity";
       groupCells: true,
       autoPlay: true
     });
+
     const carouselItems = document.getElementsByClassName(
       "carousel-item__play"
     );
