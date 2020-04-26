@@ -1,0 +1,18 @@
+{
+  "printWidth": 100,
+  "singleQuote": true,
+  "trailingComma": "es5",
+  "jsxBracketSameLine:": true,
+  "bracketSpacing": true,
+  "requirePragma": false,
+  "parser": "flow",
+  "tailingComma": "all",
+  "overrides": [
+    {
+      "files": ".prettierrc",
+      "options": {
+        "parser": "json"
+      }
+    }
+  ]
+}
