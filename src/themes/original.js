@@ -24,5 +24,8 @@ const original = {
     default: '#FDFDFF',
     gray: '#B0B1B4',
   },
+  spacing: function (n) {
+    return n * 8;
+  },
 };
 export default original;
