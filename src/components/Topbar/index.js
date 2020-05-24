@@ -5,26 +5,27 @@ import * as routes from '../../routes';
 import { IoMdMenu, IoIosCloseCircleOutline } from 'react-icons/io';
 import HamburguerMenu from '../HamburguerMenu';
 import styled from 'styled-components';
+import { withRouter } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const MenuContainer = styled.header`
   height: 100px;
-  .header{
+  .header {
     &-inner {
-      position:relative;
+      position: relative;
       z-index: 10;
       height: 100px;
       display: flex;
       justify-content: space-between;
     }
   }
-  .
 `;
 
-const Topbar = () => {
+const Topbar = ({ history }) => {
   const [state, setState] = useState({
     initial: false,
     clicked: null,
-    isOpen: false,
+    // isOpen: false,
   });
 
   const [disabled, setDisabled] = useState(false);
@@ -35,21 +36,18 @@ const Topbar = () => {
       setState({
         initial: null,
         clicked: true,
-        isOpen: true,
+        // isOpen: true,
       });
-      console.log('initial clicked');
     } else if (state.clicked === true) {
       setState({
         clicked: !state.clicked,
-        isOpen: false,
+        // isOpen: false,
       });
-      console.log('1');
     } else if (state.clicked === false) {
       setState((state) => ({
         clicked: !state.clicked,
-        isOpen: true,
+        // isOpen: true,
       }));
-      console.log('2');
     }
   };
 
@@ -60,13 +58,21 @@ const Topbar = () => {
     }, 1200);
   };
 
+  useEffect(() => {
+    history.listen(() => {
+      setState({
+        clicked: false,
+      });
+    });
+  }, [history]);
+
   return (
     <MenuContainer>
       <div className="container">
         <div className="wrapper">
           <div className="header-inner">
             <LogoLink to={routes.base}>
-              <LogoIcon color="#333333" />
+              <LogoIcon color="#191919" />
             </LogoLink>
             <MainNav>
               <MenuButton disabled={disabled} onClick={handleMenu}>
@@ -81,22 +87,4 @@ const Topbar = () => {
   );
 };
 
-export default Topbar;
-
-{
-  /* <SLink activeClassName="is-selected" to={routes.blog}>
-          Blog
-        </SLink>
-        <SLink activeClassName="is-selected" to={routes.work}>
-          Portfolio
-        </SLink>
-        <SLink activeClassName="is-selected" to={routes.talks}>
-          Talks
-        </SLink>
-        <SLink activeClassName="is-selected" to={routes.about}>
-          About
-        </SLink>
-        <CallActionButton href="mailto:paulclindo@gmail.com?body=Hi there, Paul! ...">
-          Contact me
-        </CallActionButton> */
-}
+export default withRouter(Topbar);

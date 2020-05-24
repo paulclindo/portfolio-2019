@@ -11,6 +11,7 @@
   },
   "keywords": [],
   "dependencies": {
+    "gsap": "^3.2.6",
     "react": "16.8.3",
     "react-dom": "16.8.3",
     "react-error-boundary": "^1.2.5",

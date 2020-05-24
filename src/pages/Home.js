@@ -1,10 +1,10 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import * as routes from "../routes";
-import { IoIosArrowRoundForward } from "react-icons/io";
-import styled, { keyframes } from "styled-components";
-import PhotoProfile from "../assets/static/hero-bg.png";
-import bgProfile from "../assets/static/bg-profile.svg";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import * as routes from '../routes';
+import { IoIosArrowRoundForward } from 'react-icons/io';
+import styled, { keyframes } from 'styled-components';
+import PhotoProfile from '../assets/static/hero-bg.png';
+import bgProfile from '../assets/static/bg-profile.svg';
 
 const GlobalWidth = styled.div`
   width: 1280px;

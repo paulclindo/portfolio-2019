@@ -14,7 +14,7 @@ export default function Layout({ children }) {
   return (
     <Container>
       <Topbar />
-      {children}
+      <div className="wrapper">{children}</div>
     </Container>
   );
 }

@@ -1,10 +1,7 @@
-import styled from "styled-components";
-import { Link, NavLink } from "react-router-dom";
+import styled from 'styled-components';
+import { Link, NavLink } from 'react-router-dom';
 
 export const MenuContainer = styled.header`
-  /* display: flex; */
-  /* justify-content: space-between; */
-  /* align-items: center; */
   height: 100px;
   margin: 0 auto;
   text-transform: uppercase;
@@ -17,12 +14,12 @@ export const SLink = styled(NavLink)`
   margin: 0 2rem;
   position: relative;
   transition: transform 1s;
-  &[aria-current="page"] {
+  &[aria-current='page'] {
     color: ${(props) => props.theme.color.main};
     font-weight: 700;
   }
   &::after {
-    content: " ";
+    content: ' ';
     position: absolute;
     bottom: -10px;
     left: 0;

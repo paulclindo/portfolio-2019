@@ -2,6 +2,15 @@ import React, { useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import * as routes from '../../routes';
 import styled from 'styled-components';
+import {
+  staggerReveal,
+  staggerRevealClose,
+  fadeInUp,
+  staggerText,
+  handleHover,
+  handleHoverOff,
+} from '../../themes/animations';
+import gsap from 'gsap';
 
 const Burguer = styled.div`
   display: none;
@@ -113,43 +122,94 @@ const Burguer = styled.div`
 export default function HamburguerMenu(props) {
   const { state } = props;
   let burguer = useRef(null);
+  let burguerSecondaryBg = useRef(null);
+  let burguerMain = useRef(null);
+  let cityBg = useRef(null);
+  let burguerInfo = useRef(null);
+  let link1 = useRef(null);
+  let link2 = useRef(null);
+  let link3 = useRef(null);
+  let link4 = useRef(null);
 
   useEffect(() => {
-    console.log(burguer);
-    if (state.clicked === true) {
-      // display block
-      burguer.style.display = 'block';
+    if (state.clicked === true || (state.clicked === true && state.initial === null)) {
+      gsap.to(burguer, {
+        duration: 0,
+        css: { display: 'block' },
+      });
+
+      gsap.to([burguerSecondaryBg, burguerMain], {
+        duration: 0,
+        opacity: 1,
+        height: '100%',
+      });
+
+      staggerReveal(burguerSecondaryBg, burguerMain);
+      fadeInUp(burguerInfo);
+      staggerText(link1, link2, link3, link4);
     } else if (state.clicked === false) {
-      // display none
-      burguer.style.display = 'none';
+      staggerRevealClose(burguerMain, burguerSecondaryBg);
+
+      gsap.to(burguer, {
+        duration: 1,
+        css: { display: 'none' },
+      });
     }
-  });
+  }, [state.clicked]);
 
   return (
     <Burguer ref={(el) => (burguer = el)} className="burguer">
-      <div className="burguer-secondary-bg"></div>
-      <div className="burguer-main">
-        <div className="burguer-city-bg"></div>
+      <div ref={(el) => (burguerSecondaryBg = el)} className="burguer-secondary-bg"></div>
+      <div ref={(el) => (burguerMain = el)} className="burguer-main">
+        <div ref={(el) => (cityBg = el)} className="burguer-city-bg"></div>
         <div className="container">
           <div className="wrapper">
             <div className="burguer-links">
               <nav>
                 <ul>
                   <li>
-                    <Link to={routes.blog}>Blog</Link>
+                    <Link
+                      to={routes.blog}
+                      ref={(el) => (link1 = el)}
+                      onMouseEnter={(e) => handleHover(e.target)}
+                      onMouseOut={(e) => handleHoverOff(e.target)}
+                    >
+                      Blog
+                    </Link>
                   </li>
                   <li>
-                    <Link to={routes.work}>Portfolio</Link>
+                    <Link
+                      to={routes.work}
+                      ref={(el) => (link2 = el)}
+                      onMouseEnter={(e) => handleHover(e.target)}
+                      onMouseOut={(e) => handleHoverOff(e.target)}
+                    >
+                      Portfolio
+                    </Link>
                   </li>
                   <li>
-                    <Link to={routes.about}>About</Link>
+                    <Link
+                      to={routes.about}
+                      ref={(el) => (link3 = el)}
+                      onMouseEnter={(e) => handleHover(e.target)}
+                      onMouseOut={(e) => handleHoverOff(e.target)}
+                    >
+                      About
+                    </Link>
                   </li>
                   <li>
-                    <Link to={routes.contact}>Contact me</Link>
+                    <Link
+                      to={routes.contact}
+                      ref={(el) => (link4 = el)}
+                      onMouseEnter={(e) => handleHover(e.target)}
+                      onMouseOut={(e) => handleHoverOff(e.target)}
+                    >
+                      Contact me
+                    </Link>
                   </li>
                 </ul>
               </nav>
-              <div className="burguer-info">
+              <div ref={(el) => (burguerInfo = el)} className="burguer-info">
                 <h3>Talks</h3>
                 <p>
                   Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sit modi itaque animi
