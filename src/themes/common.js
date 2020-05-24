@@ -57,7 +57,9 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
     padding: 0;
     font-family: ${FONT_FAMILY.normal};
-    background-color: ${(props) => props.theme.color.body}
+    background-color: ${(props) => props.theme.color.body};
+    overflow: hidden; 
+
   }
   li {
     list-style: none;
@@ -65,6 +67,14 @@ const GlobalStyles = createGlobalStyle`
   a {
     text-decoration: none;
     color:inherit;
+  }
+  .container {
+    width: 1280px;
+    min-width:1280px;
+    margin: 0 auto;
+  }
+  .wrapper {
+    padding: 0 48px;
   }
 `;
 export default GlobalStyles;

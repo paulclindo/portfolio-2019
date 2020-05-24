@@ -4,8 +4,10 @@ import styled from 'styled-components';
 
 const Container = styled.div`
   font-family: ${(props) => props.theme.font.alterFont};
-  overflow: hidden;
   position: relative;
+  width: 1280px;
+  min-width: 1280px;
+  margin: 0 auto;
 `;
 
 export default function Layout({ children }) {

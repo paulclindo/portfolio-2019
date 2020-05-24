@@ -1,20 +1,21 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import * as routes from '../routes';
-import { IoIosArrowRoundForward } from 'react-icons/io';
-import styled, { keyframes } from 'styled-components';
-import PhotoProfile from '../assets/static/hero-bg.png';
-import bgProfile from '../assets/static/bg-profile.svg';
+import React from "react";
+import { Link } from "react-router-dom";
+import * as routes from "../routes";
+import { IoIosArrowRoundForward } from "react-icons/io";
+import styled, { keyframes } from "styled-components";
+import PhotoProfile from "../assets/static/hero-bg.png";
+import bgProfile from "../assets/static/bg-profile.svg";
 
 const GlobalWidth = styled.div`
-  max-width: 1000px;
+  width: 1280px;
+  min-width: 1280px;
   margin: 0 auto;
 `;
 const HeroLeft = styled.div``;
 const HeroRight = styled.div`
-  /* position: relative; */
-
-  min-width: 500px;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
   height: 100%;
   align-self: flex-start;
 `;
@@ -34,6 +35,9 @@ const HeroContainer = styled.div`
   align-items: center;
   margin: auto;
   height: calc(100vh - 103px);
+  & > div {
+    flex: 1;
+  }
 `;
 const HeroTitle = styled.h1`
   font-size: 3em;
@@ -57,10 +61,11 @@ const rotateInfiniteAnimation = keyframes`
 const BackgroundImage = styled.img`
   position: absolute;
   z-index: -2;
-  width: 200%;
-  height: 200%;
-  top: 0%;
-  left: 0%;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  /* right: 0; */
   animation: ${rotateInfiniteAnimation} 20s infinite both;
 `;
 
@@ -97,9 +102,6 @@ export default function Home() {
           </SLink>
         </HeroLeft>
         <HeroRight>
-          {/* <ProfileImage>
-            <img src={PhotoProfile} alt="" />
-          </ProfileImage> */}
           <BackgroundImage src={bgProfile}></BackgroundImage>
         </HeroRight>
       </HeroContainer>

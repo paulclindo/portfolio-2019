@@ -12,7 +12,7 @@ const original = {
     main: '#FF6464',
     secondary: '#543864',
     alternative: '#04080F',
-    dark: '#04080F',
+    dark: '#191919',
     body: '#FAFAFA',
   },
   font: {
