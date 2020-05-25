@@ -23,7 +23,7 @@ export const SLink = styled(NavLink)`
     position: absolute;
     bottom: -10px;
     left: 0;
-    background: linear-gradient(to right, #e35d5b, #e53935);
+    /* background: linear-gradient(to right, #e35d5b, #e53935); */
     /* background: linear-gradient(to right, #23074d, #cc5333); */
     background-size: 300%;
     width: 0;
@@ -42,9 +42,7 @@ export const CallActionButton = styled.a`
   margin-left: 1rem;
   padding: 12px 20px;
   border-radius: 20px;
-  /* border: 1px solid ${(props) => props.theme.color.main}; */
   transition: background 0.8s, transform 0.3s;
-  /* background: linear-gradient(to right, #23074d, #cc5333); */
   background: linear-gradient(to right, #e35d5b, #e53935);
 
   background-size: 200%;
@@ -56,15 +54,24 @@ export const CallActionButton = styled.a`
   }
 `;
 export const LogoLink = styled(Link)`
-  height: 100%;
-  svg {
+  height: 50px;
+  line-height: 4;
+  transition: transform 0.6s;
+  &:hover {
+    transform: translateY(-4px);
+  }
+  /* svg {
     padding: 18px 0;
     transform: scale(0.7);
-  }
+  } */
 `;
 export const MenuButton = styled.button`
   background: none;
   border: none;
   cursor: pointer;
   outline: none;
+  transition: transform 0.3s;
+  &:active {
+    transform: scale(0.9);
+  }
 `;

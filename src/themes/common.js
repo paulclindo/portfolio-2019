@@ -28,7 +28,7 @@ const GlobalStyles = createGlobalStyle`
   }
   @font-face {
     font-family: "Helvetica Now Display";
-    font-style: "normal";
+    font-style: "bold";
     font-weight: 700;
     src: url('${FHelveticaNormal700Woff2}') format('woff2');
   }
@@ -40,7 +40,7 @@ const GlobalStyles = createGlobalStyle`
   }
   @font-face {
      font-family: "Sharp Sans No2";
-    font-style: "normal";
+    font-style: "bold";
     font-weight: 700;
     src: url('${FSharpSansNormal700Woff2}') format('woff2');
   }

@@ -1,7 +1,16 @@
 import React, { useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import * as routes from '../../routes';
 import styled from 'styled-components';
+import gsap from 'gsap';
+
+import {
+  IoLogoInstagram,
+  IoLogoLinkedin,
+  IoLogoGithub,
+  IoLogoTwitter,
+  IoLogoDribbble,
+} from 'react-icons/io';
+import * as routes from '../../routes';
 import {
   staggerReveal,
   staggerRevealClose,
@@ -10,7 +19,6 @@ import {
   handleHover,
   handleHoverOff,
 } from '../../themes/animations';
-import gsap from 'gsap';
 
 const Burguer = styled.div`
   display: none;
@@ -83,18 +91,49 @@ const Burguer = styled.div`
       }
     }
     &-info {
-      width: 300px;
+      width: 400px;
       font-family: ${(props) => props.theme.font.mainFont};
+      font-weight: 100;
+      line-height: 1.4;
+      letter-spacing: 1px;
 
       color: ${(props) => props.theme.text.default};
-      h3 {
-        font-size: 1.2rem;
-        margin: 0.5rem auto;
+      .latest-info {
+        h3 {
+          font-size: 1rem;
+          margin: 0.5rem auto;
+          text-transform: uppercase;
+        }
+        ul {
+          padding: 5px;
+          margin: 0;
+          li {
+            list-style: square;
+            font-size: 0.9rem;
+            margin: 10px auto;
+          }
+          a {
+            color: ${(props) => props.theme.color.secondary};
+            font-weight: bold;
+            margin-left: 5px;
+          }
+        }
       }
-      p {
-        line-height: 1.4;
-        font-size: 0.9rem;
-        margin: 0 auto;
+      .social-info {
+        margin-top: 0.8rem;
+        padding: 0.8rem 0;
+        display: flex;
+        a {
+          margin: 0px 7px 0 25px;
+          display: block;
+          transition: 0.6s transform;
+          &:hover {
+            svg {
+              fill: ${(props) => props.theme.color.secondary};
+            }
+            transform: translateY(-4px);
+          }
+        }
       }
     }
     &-location {
@@ -121,6 +160,7 @@ const Burguer = styled.div`
 
 export default function HamburguerMenu(props) {
   const { state } = props;
+
   let burguer = useRef(null);
   let burguerSecondaryBg = useRef(null);
   let burguerMain = useRef(null);
@@ -210,15 +250,44 @@ export default function HamburguerMenu(props) {
                 </ul>
               </nav>
               <div ref={(el) => (burguerInfo = el)} className="burguer-info">
-                <h3>Talks</h3>
-                <p>
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sit modi itaque animi
-                  quos corrupti? Itaque sapiente illo optio aspernatur consequuntur inventore, rerum
-                  incidunt harum fuga laborum ex ullam, iusto exercitationem.
-                </p>
+                <div className="latest-info">
+                  <h3>Latest about myself</h3>
+                  <ul>
+                    <li>
+                      Currently making things happen at
+                      <a href="https://emurgo.io/" target="_blank">
+                        Emurgo.
+                      </a>
+                    </li>
+                    <li>
+                      Sharing and Learning through blogs, posts throught instagram in
+                      <a href="https://www.instagram.com/frontendui/" target="_blank">
+                        FrontendUI
+                      </a>
+                    </li>
+                    <li>Blogs Section & Youtube Channel is comming soon ...</li>
+                  </ul>
+                </div>
+                <div className="social-info">
+                  <a href="https://www.linkedin.com/in/paulccari/" target="_blank">
+                    <IoLogoLinkedin size={32} />
+                  </a>
+                  <a href="https://github.com/paulclindo" target="_blank">
+                    <IoLogoGithub size={32} />
+                  </a>
+                  <a href="https://twitter.com/paulclindo" target="_blank">
+                    <IoLogoTwitter size={32} />
+                  </a>
+                  <a href="https://www.instagram.com/paulclindo/" target="_blank">
+                    <IoLogoInstagram size={32} />
+                  </a>
+                  <a href="https://dribbble.com/paulclindo" target="_blank">
+                    <IoLogoDribbble size={32} />
+                  </a>
+                </div>
               </div>
               <div className="burguer-location">
-                Locations:
+                DO NOT hover places name!
                 <span>San Francisco</span>
                 <span>Lima</span>
                 <span>Lima</span>

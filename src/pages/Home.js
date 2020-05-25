@@ -11,10 +11,11 @@ const GlobalWidth = styled.div`
   min-width: 1280px;
   margin: 0 auto;
 `;
-const HeroLeft = styled.div``;
+const HeroLeft = styled.div`
+  overflow: hidden;
+`;
 const HeroRight = styled.div`
   position: relative;
-  overflow: hidden;
   width: 100%;
   height: 100%;
   align-self: flex-start;
@@ -34,25 +35,44 @@ const HeroContainer = styled.div`
   justify-content: center;
   align-items: center;
   margin: auto;
-  height: calc(100vh - 103px);
+  margin-top: 200px;
+  /* height: calc(100vh - 100px); */
   & > div {
+    flex: 1.5;
+  }
+  & > div:last-child {
     flex: 1;
   }
 `;
 const HeroTitle = styled.h1`
-  font-size: 3em;
+  font-weight: 300;
+  font-size: 1rem;
   line-height: 1.2;
+  letter-spacing: 0.4rem;
   margin-bottom: ${(props) => props.theme.spacing(4)}px;
+  span {
+    font-size: 2rem;
+  }
 `;
 const HeroPosition = styled.p`
-  font-size: 2em;
+  font-size: 5rem;
+  font-weight: 700;
+  letter-spacing: -1px;
+  line-height: 1.2;
   margin: 0;
+  span {
+    color: ${(props) => props.theme.color.main};
+  }
 `;
 const HeroSummary = styled.p`
   font-size: 1.2em;
   line-height: 1.5;
   font-weight: 300;
   font-family: ${(props) => props.theme.font.mainFont};
+  span {
+    margin: 0 30px;
+    margin-left: 0;
+  }
 `;
 const rotateInfiniteAnimation = keyframes`
   0%{transform: rotate(0)}
@@ -66,7 +86,7 @@ const BackgroundImage = styled.img`
   top: 0;
   left: 0;
   /* right: 0; */
-  animation: ${rotateInfiniteAnimation} 20s infinite both;
+  animation: ${rotateInfiniteAnimation} 40s infinite ease-in;
 `;
 
 // const MaxWidthContainer = styled.div`
@@ -90,12 +110,15 @@ export default function Home() {
       <HeroContainer>
         <HeroLeft>
           <HeroTitle>
-            Hey there, <br /> I am Paul Ccari
+            {/* Welcome, <span>I'm Paul Ccari.</span> */}
+            Let's Bring Ideas to Life.
           </HeroTitle>
-          <HeroPosition>I'm Frontend Developer & UX Designer</HeroPosition>
+          <HeroPosition>
+            Creating Unique Digital <span>Experiences</span>.
+          </HeroPosition>
           <HeroSummary>
-            I'm always looking for experiences to learn and continue challenging myself to take out
-            of my comfort zone. Would you mind if I show you some of my lastest projects?
+            <span>UI/UX Designer</span>
+            <span>Front End Developer</span>
           </HeroSummary>
           <SLink to={routes.work}>
             <span>Let's Explore</span> <IoIosArrowRoundForward size="30" />

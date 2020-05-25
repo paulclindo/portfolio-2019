@@ -8,7 +8,6 @@ import * as routes from './routes';
 import Home from './pages/Home';
 
 const App = () => {
-  console.log({ GlobalStyles });
   return (
     <ThemeProvider theme={original}>
       <GlobalStyles />

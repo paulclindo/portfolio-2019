@@ -17,6 +17,7 @@ const MenuContainer = styled.header`
       height: 100px;
       display: flex;
       justify-content: space-between;
+      align-items: center;
     }
   }
 `;
@@ -72,7 +73,8 @@ const Topbar = ({ history }) => {
         <div className="wrapper">
           <div className="header-inner">
             <LogoLink to={routes.base}>
-              <LogoIcon color="#191919" />
+              {/* <LogoIcon color="#191919" /> */}
+              PAUL CCARI.
             </LogoLink>
             <MainNav>
               <MenuButton disabled={disabled} onClick={handleMenu}>
