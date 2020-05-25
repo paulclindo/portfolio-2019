@@ -114,7 +114,6 @@ const Burguer = styled.div`
       ${mediaTo.lg`
         width: 400px;
         margin-top: 0;
-
       `}
       .latest-info {
         h3 {

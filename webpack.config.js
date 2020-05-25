@@ -1,53 +1,61 @@
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const webpack = require("webpack");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const TersetJSPlugin = require("terser-webpack-plugin");
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const TersetJSPlugin = require('terser-webpack-plugin');
 
 module.exports = {
   entry: {
-    app: path.resolve(__dirname, "src/index.js"),
+    app: path.resolve(__dirname, 'src/index.js'),
   },
-  mode: "development",
   output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "js/[name].[hash].js",
-    chunkFilename: "js/[id].[chunkhash].js",
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'js/[name].[hash].js',
+    chunkFilename: 'js/[id].[chunkhash].js',
   },
   optimization: {
     minimizer: [new TersetJSPlugin()],
   },
-  devServer: {
-    port: 8000,
-  },
   module: {
     rules: [
       {
-        test: /\.js$/,
-        use: "babel-loader",
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+        },
       },
       {
-        test: /\.jpg|png|gif|woff|woff2|eot|ttf|svg|mp4|webm$/,
-        use: {
-          loader: "file-loader",
-          options: {
-            limit: 1000,
-            name: "[hash].[ext]",
-            outputPath: "assets",
+        test: /\.html$/,
+        use: [
+          {
+            loader: 'html-loader',
           },
-        },
+        ],
+      },
+      {
+        test: /\.(jp(e)?g|png|woff(2)?|eot|ttf|svg|mp4|webm|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              limit: 8192,
+              name: '[name].[ext]',
+              outPath: 'assets',
+            },
+          },
+        ],
       },
     ],
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
-      title: "Webpack dev server",
-      template: path.resolve(__dirname, "public/index.html"),
+      title: 'Webpack dev server',
+      template: path.resolve(__dirname, 'public/index.html'),
     }),
     new CleanWebpackPlugin({
-      cleanOnceBeforeBuildPatterns: ["**/app.*"],
+      cleanOnceBeforeBuildPatterns: ['**/app.*'],
     }),
   ],
 };
