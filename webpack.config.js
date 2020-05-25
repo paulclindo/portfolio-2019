@@ -50,10 +50,10 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new HtmlWebpackPlugin({
-      title: 'Webpack dev server',
-      template: path.resolve(__dirname, 'public/index.html'),
-    }),
+    // new HtmlWebpackPlugin({
+    //   title: 'Webpack dev server',
+    //   template: path.resolve(__dirname, 'public/index.html'),
+    // }),
     new CleanWebpackPlugin({
       cleanOnceBeforeBuildPatterns: ['**/app.*'],
     }),
