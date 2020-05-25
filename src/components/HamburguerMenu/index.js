@@ -75,7 +75,6 @@ const Burguer = styled.div`
       height: 100%;
       opacity: 0;
       background-size: cover;
-      background-blend-mode: saturation;
       background-repeat: no-repeat;
       animation: cameraPan 30s infinite;
     }
