@@ -14,7 +14,7 @@ module.exports = {
     chunkFilename: 'js/[id].[chunkash].js',
   },
   devServer: {
-    contentBase: path.resolve(__dirname, 'dist'),
+    // contentBase: path.resolve(__dirname, 'dist'),
     port: 8080,
     historyApiFallback: true,
   },

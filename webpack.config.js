@@ -5,10 +5,9 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const TersetJSPlugin = require('terser-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.js',
-  // {
-  //   app: path.resolve(__dirname, 'src/index.js'),
-  // },
+  entry: {
+    app: path.resolve(__dirname, 'src/index.js'),
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'js/[name].[hash].js',
@@ -16,7 +15,7 @@ module.exports = {
     publicPath: './',
   },
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['*', '.js', '.jsx'],
   },
   optimization: {
     minimizer: [new TersetJSPlugin()],
@@ -57,6 +56,7 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'public/index.html'),
+      filename: 'index.html',
     }),
     new CleanWebpackPlugin({
       cleanOnceBeforeBuildPatterns: ['**/app.*'],
