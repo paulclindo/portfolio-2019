@@ -5,7 +5,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const TersetJSPlugin = require('terser-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.js'
+  entry: './src/index.js',
   // {
   //   app: path.resolve(__dirname, 'src/index.js'),
   // },
