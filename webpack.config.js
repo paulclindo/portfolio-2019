@@ -12,7 +12,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'js/[name].[hash].js',
     // chunkFilename: 'js/[id].[chunkhash].js',
-    publicPath: '/',
+    publicPath: './',
   },
   resolve: {
     extensions: ['.js', '.jsx'],
@@ -55,7 +55,6 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
-      title: 'Webpack dev server',
       template: path.resolve(__dirname, 'public/index.html'),
     }),
     new CleanWebpackPlugin({
