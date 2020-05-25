@@ -10,6 +10,7 @@ import {
   IoLogoTwitter,
   IoLogoDribbble,
 } from 'react-icons/io';
+
 import * as routes from '../../routes';
 import { mediaTo } from '../../themes/helpers/breakpoints';
 import {
@@ -19,7 +20,22 @@ import {
   staggerText,
   handleHover,
   handleHoverOff,
+  handleCity,
+  handleCityOff,
 } from '../../themes/animations';
+import dallas from '../../assets/static/citites-images/dallas.webp';
+import austin from '../../assets/static/citites-images/austin.webp';
+import newyork from '../../assets/static/citites-images/newyork.webp';
+import sanfrancisco from '../../assets/static/citites-images/sanfrancisco.webp';
+import beijing from '../../assets/static/citites-images/beijing.webp';
+
+const cities = [
+  { name: 'Dallas', image: dallas },
+  { name: 'Austin', image: austin },
+  { name: 'New York', image: newyork },
+  { name: 'San Francisco', image: sanfrancisco },
+  { name: 'Beijing', image: beijing },
+];
 
 const Burguer = styled.div`
   display: none;
@@ -58,6 +74,10 @@ const Burguer = styled.div`
       width: 100%;
       height: 100%;
       opacity: 0;
+      background-size: cover;
+      background-blend-mode: saturation;
+      background-repeat: no-repeat;
+      animation: cameraPan 30s infinite;
     }
     .wrapper {
       position: relative;
@@ -179,6 +199,24 @@ const Burguer = styled.div`
       ${mediaTo.lg`
         display: block;
       `}
+    }
+  }
+
+  @keyframes cameraPan {
+    0% {
+      background-position: 0% 0%;
+    }
+    25% {
+      background-position: 30% 10%;
+    }
+    50% {
+      background-position: 0% 10%;
+    }
+    75% {
+      background-position: 10% 40%;
+    }
+    100% {
+      background-position: 0% 0%;
     }
   }
 `;
@@ -313,11 +351,15 @@ export default function HamburguerMenu(props) {
               </div>
               <div className="burguer-location">
                 DO NOT hover places name!
-                <span>San Francisco</span>
-                <span>Lima</span>
-                <span>Lima</span>
-                <span>Lima</span>
-                <span>Lima</span>
+                {cities.map((city) => (
+                  <span
+                    key={city.name}
+                    onMouseEnter={() => handleCity(city.image, cityBg)}
+                    onMouseOut={() => handleCityOff(cityBg)}
+                  >
+                    {city.name}
+                  </span>
+                ))}
               </div>
             </div>
           </div>

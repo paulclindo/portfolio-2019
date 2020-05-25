@@ -11,7 +11,8 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'js/[name].[hash].js',
-    chunkFilename: 'js/[id].[chunkhash].js',
+    // chunkFilename: 'js/[id].[chunkhash].js',
+    publicPath: '/',
   },
   optimization: {
     minimizer: [new TersetJSPlugin()],
@@ -34,7 +35,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.(jp(e)?g|png|woff(2)?|eot|ttf|svg|mp4|webm|gif)$/,
+        test: /\.(jp(e)?g|png|woff(2)?|eot|ttf|svg|mp4|webm|gif|webp)$/,
         use: [
           {
             loader: 'file-loader',
@@ -50,10 +51,10 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    // new HtmlWebpackPlugin({
-    //   title: 'Webpack dev server',
-    //   template: path.resolve(__dirname, 'public/index.html'),
-    // }),
+    new HtmlWebpackPlugin({
+      title: 'Webpack dev server',
+      template: path.resolve(__dirname, 'public/index.html'),
+    }),
     new CleanWebpackPlugin({
       cleanOnceBeforeBuildPatterns: ['**/app.*'],
     }),

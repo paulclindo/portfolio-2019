@@ -122,10 +122,7 @@ export default function Home() {
     <GlobalWidth>
       <HeroContainer>
         <HeroLeft>
-          <HeroTitle>
-            {/* Welcome, <span>I'm Paul Ccari.</span> */}
-            Let's Bring Ideas to Life.
-          </HeroTitle>
+          <HeroTitle>Let's Bring Ideas to Life.</HeroTitle>
           <HeroPosition>
             Creating Unique Digital <span>Experiences</span>.
           </HeroPosition>

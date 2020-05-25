@@ -1,20 +1,20 @@
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const webpack = require("webpack");
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = {
   entry: {
-    app: path.resolve(__dirname, "src/index.js"),
+    app: path.resolve(__dirname, 'src/index.js'),
   },
 
-  mode: "development",
+  mode: 'development',
   output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "js/[name].js",
-    chunkFilename: "js/[id].[chunkash].js",
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'js/[name].js',
+    chunkFilename: 'js/[id].[chunkash].js',
   },
   devServer: {
-    contentBase: path.resolve(__dirname, "dist"),
+    contentBase: path.resolve(__dirname, 'dist'),
     port: 8080,
     historyApiFallback: true,
   },
@@ -25,26 +25,26 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
         },
       },
       {
         test: /\.html$/,
         use: [
           {
-            loader: "html-loader",
+            loader: 'html-loader',
           },
         ],
       },
       {
-        test: /\.(jp(e)?g|png|woff(2)?|eot|ttf|svg|mp4|webm|gif)$/,
+        test: /\.(jp(e)?g|png|woff(2)?|eot|ttf|svg|mp4|webm|gif|webp)$/,
         use: [
           {
-            loader: "file-loader",
+            loader: 'file-loader',
             options: {
               limit: 8192,
-              name: "[name].[ext]",
-              outPath: "assets",
+              name: '[name].[ext]',
+              outPath: 'assets',
             },
           },
         ],
@@ -55,7 +55,7 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, "public/index.html"),
+      template: path.resolve(__dirname, 'public/index.html'),
     }),
   ],
 };
