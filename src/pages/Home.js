@@ -5,11 +5,12 @@ import { IoIosArrowRoundForward } from 'react-icons/io';
 import styled, { keyframes } from 'styled-components';
 import PhotoProfile from '../assets/static/hero-bg.png';
 import bgProfile from '../assets/static/bg-profile.svg';
+import { mediaTo } from '../themes/helpers/breakpoints';
 
 const GlobalWidth = styled.div`
-  width: 1280px;
+  /* width: 1280px;
   min-width: 1280px;
-  margin: 0 auto;
+  margin: 0 auto; */
 `;
 const HeroLeft = styled.div`
   overflow: hidden;
@@ -31,31 +32,37 @@ const ProfileImage = styled.div`
 `;
 
 const HeroContainer = styled.div`
-  display: flex;
   justify-content: center;
   align-items: center;
   margin: auto;
-  margin-top: 200px;
-  /* height: calc(100vh - 100px); */
-  & > div {
-    flex: 1.5;
-  }
-  & > div:last-child {
-    flex: 1;
-  }
+  margin-top: 30%;
+  ${mediaTo.lg`
+    margin-top: 200px;
+    display: flex;
+    & > div {
+      flex: 1.5;
+    }
+    & > div:last-child {
+      flex: 1;
+    }
+  `}
 `;
 const HeroTitle = styled.h1`
   font-weight: 300;
   font-size: 1rem;
-  line-height: 1.2;
-  letter-spacing: 0.4rem;
+  line-height: 2;
+  letter-spacing: 0.4px;
   margin-bottom: ${(props) => props.theme.spacing(4)}px;
   span {
     font-size: 2rem;
   }
+  ${mediaTo.lg`
+    line-height: 1.2;
+    letter-spacing: 0.4rem;
+  `}
 `;
 const HeroPosition = styled.p`
-  font-size: 5rem;
+  font-size: 3rem;
   font-weight: 700;
   letter-spacing: -1px;
   line-height: 1.2;
@@ -63,9 +70,12 @@ const HeroPosition = styled.p`
   span {
     color: ${(props) => props.theme.color.main};
   }
+  ${mediaTo.lg`
+    font-size: 5rem;
+  `}
 `;
 const HeroSummary = styled.p`
-  font-size: 1.2em;
+  font-size: 0.8rem;
   line-height: 1.5;
   font-weight: 300;
   font-family: ${(props) => props.theme.font.mainFont};
@@ -73,6 +83,9 @@ const HeroSummary = styled.p`
     margin: 0 30px;
     margin-left: 0;
   }
+  ${mediaTo.lg`
+    font-size: 1.2rem;
+  `}
 `;
 const rotateInfiniteAnimation = keyframes`
   0%{transform: rotate(0)}

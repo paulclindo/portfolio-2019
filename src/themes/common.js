@@ -8,6 +8,7 @@ import FHelveticaNormal700Woff2 from '../assets/fonts/Helvetica/helveticanowdisp
 /**    - Sharp Sans -    */
 import FSharpSansNormal600Woff2 from '../assets/fonts/SharpSans/SharpSansNo2-Semibold.woff2';
 import FSharpSansNormal700Woff2 from '../assets/fonts/SharpSans/SharpSansNo2-Bold.woff2';
+import { mediaTo } from './helpers/breakpoints';
 
 const FONT_FAMILY = {
   normal: ["'Helvetica Now Display'", 'sans-serif'].join(', '),
@@ -69,9 +70,11 @@ const GlobalStyles = createGlobalStyle`
     color:inherit;
   }
   .container {
-    width: 1280px;
-    min-width:1280px;
-    margin: 0 auto;
+    ${mediaTo.lg`
+      width: 1280px;
+      min-width: 1280px;
+      margin: 0 auto;
+    `}
   }
   .wrapper {
     padding: 0 48px;

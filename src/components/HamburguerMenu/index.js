@@ -11,6 +11,7 @@ import {
   IoLogoDribbble,
 } from 'react-icons/io';
 import * as routes from '../../routes';
+import { mediaTo } from '../../themes/helpers/breakpoints';
 import {
   staggerReveal,
   staggerRevealClose,
@@ -63,22 +64,34 @@ const Burguer = styled.div`
     }
     &-links {
       display: flex;
+      flex-direction: column;
       justify-content: space-between;
       align-items: center;
       position: relative;
       top: 200px;
+      ${mediaTo.lg`
+        flex-direction: row;
+      `}
       nav {
         display: block;
+        width: 100%;
+        ${mediaTo.lg`
+        
+        `}
         ul {
           margin: 0;
           padding: 0;
           li {
-            font-size: 6rem;
-            height: 135px;
+            font-size: 2rem;
+            height: 35px;
             cursor: pointer;
             font-weight: 700;
             overflow: hidden;
             text-transform: uppercase;
+            ${mediaTo.lg`
+              font-size: 6rem;
+              height: 135px;
+            `}
             a {
               color: ${(props) => props.theme.text.default};
               position: absolute;
@@ -91,13 +104,18 @@ const Burguer = styled.div`
       }
     }
     &-info {
-      width: 400px;
+      width: 100%;
       font-family: ${(props) => props.theme.font.mainFont};
       font-weight: 100;
       line-height: 1.4;
       letter-spacing: 1px;
-
+      margin-top: 3rem;
       color: ${(props) => props.theme.text.default};
+      ${mediaTo.lg`
+        width: 400px;
+        margin-top: 0;
+
+      `}
       .latest-info {
         h3 {
           font-size: 1rem;
@@ -123,10 +141,14 @@ const Burguer = styled.div`
         margin-top: 0.8rem;
         padding: 0.8rem 0;
         display: flex;
+
         a {
-          margin: 0px 7px 0 25px;
+          margin: 0px 10px;
           display: block;
           transition: 0.6s transform;
+          ${mediaTo.lg`
+              margin:  0px 7px 0 25px;
+            `}
           &:hover {
             svg {
               fill: ${(props) => props.theme.color.secondary};
@@ -137,6 +159,7 @@ const Burguer = styled.div`
       }
     }
     &-location {
+      display: none;
       position: absolute;
       bottom: -80px;
       color: ${(props) => props.theme.text.default};
@@ -154,6 +177,9 @@ const Burguer = styled.div`
           border-radius: 4px;
         }
       }
+      ${mediaTo.lg`
+        display: block;
+      `}
     }
   }
 `;
