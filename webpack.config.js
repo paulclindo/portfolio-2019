@@ -14,6 +14,9 @@ module.exports = {
     // chunkFilename: 'js/[id].[chunkhash].js',
     publicPath: '/',
   },
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
   optimization: {
     minimizer: [new TersetJSPlugin()],
   },
