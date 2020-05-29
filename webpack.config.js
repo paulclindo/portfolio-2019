@@ -1,53 +1,81 @@
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const webpack = require("webpack");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const TersetJSPlugin = require("terser-webpack-plugin");
+const { resolve } = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const TersetJSPlugin = require('terser-webpack-plugin');
+const FaviconWebPackPlugin = require('favicons-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-  entry: {
-    app: path.resolve(__dirname, "src/index.js"),
-  },
-  mode: "development",
+  entry: './src/index.js',
   output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "js/[name].[hash].js",
-    chunkFilename: "js/[id].[chunkhash].js",
+    path: resolve(__dirname, 'dist'),
+    filename: '[name].[hash].js',
+    publicPath: './',
+  },
+  resolve: {
+    // extensions: ['*', '.js', '.jsx'],
   },
   optimization: {
     minimizer: [new TersetJSPlugin()],
   },
-  devServer: {
-    port: 8000,
-  },
   module: {
     rules: [
       {
-        test: /\.js$/,
-        use: "babel-loader",
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+        },
       },
       {
-        test: /\.jpg|png|gif|woff|woff2|eot|ttf|svg|mp4|webm$/,
-        use: {
-          loader: "file-loader",
-          options: {
-            limit: 1000,
-            name: "[hash].[ext]",
-            outputPath: "assets",
+        test: /\.html$/,
+        use: [
+          {
+            loader: 'html-loader',
           },
-        },
+        ],
+      },
+      {
+        test: /\.(woff(2)?|eot|ttf)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+              name: '[name].[ext]',
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(jp(e)?g|png|svg|mp4|webm|gif|webp)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              limit: 8192,
+              name: '[name].[ext]',
+              // publicPath: './dist/' //disabled for productions
+            },
+          },
+        ],
       },
     ],
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
-      title: "Webpack dev server",
-      template: path.resolve(__dirname, "public/index.html"),
+      template: resolve(__dirname, 'src/index.html'),
+      filename: 'index.html'
     }),
     new CleanWebpackPlugin({
-      cleanOnceBeforeBuildPatterns: ["**/app.*"],
+      cleanOnceBeforeBuildPatterns: ['**/app.*'],
     }),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: 'public'}
+      ]
+    }),
+    new FaviconWebPackPlugin('./public/favicon-512.png')
   ],
 };

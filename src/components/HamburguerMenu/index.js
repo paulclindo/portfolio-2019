@@ -10,7 +10,9 @@ import {
   IoLogoTwitter,
   IoLogoDribbble,
 } from 'react-icons/io';
+
 import * as routes from '../../routes';
+import { mediaTo } from '../../themes/helpers/breakpoints';
 import {
   staggerReveal,
   staggerRevealClose,
@@ -18,7 +20,22 @@ import {
   staggerText,
   handleHover,
   handleHoverOff,
+  handleCity,
+  handleCityOff,
 } from '../../themes/animations';
+import dallas from '../../assets/static/citites-images/dallas.webp';
+import austin from '../../assets/static/citites-images/austin.webp';
+import newyork from '../../assets/static/citites-images/newyork.webp';
+import sanfrancisco from '../../assets/static/citites-images/sanfrancisco.webp';
+import beijing from '../../assets/static/citites-images/beijing.webp';
+
+const cities = [
+  { name: 'Dallas', image: dallas },
+  { name: 'Austin', image: austin },
+  { name: 'New York', image: newyork },
+  { name: 'San Francisco', image: sanfrancisco },
+  { name: 'Beijing', image: beijing },
+];
 
 const Burguer = styled.div`
   display: none;
@@ -57,28 +74,43 @@ const Burguer = styled.div`
       width: 100%;
       height: 100%;
       opacity: 0;
+      background-size: cover;
+      background-repeat: no-repeat;
+      animation: cameraPan 30s infinite;
     }
     .wrapper {
       position: relative;
     }
     &-links {
       display: flex;
+      flex-direction: column;
       justify-content: space-between;
       align-items: center;
       position: relative;
       top: 200px;
+      ${mediaTo.lg`
+        flex-direction: row;
+      `}
       nav {
         display: block;
+        width: 100%;
+        ${mediaTo.lg`
+        
+        `}
         ul {
           margin: 0;
           padding: 0;
           li {
-            font-size: 6rem;
-            height: 135px;
+            font-size: 2rem;
+            height: 35px;
             cursor: pointer;
             font-weight: 700;
             overflow: hidden;
             text-transform: uppercase;
+            ${mediaTo.lg`
+              font-size: 6rem;
+              height: 135px;
+            `}
             a {
               color: ${(props) => props.theme.text.default};
               position: absolute;
@@ -91,13 +123,17 @@ const Burguer = styled.div`
       }
     }
     &-info {
-      width: 400px;
+      width: 100%;
       font-family: ${(props) => props.theme.font.mainFont};
       font-weight: 100;
       line-height: 1.4;
       letter-spacing: 1px;
-
+      margin-top: 3rem;
       color: ${(props) => props.theme.text.default};
+      ${mediaTo.lg`
+        width: 400px;
+        margin-top: 0;
+      `}
       .latest-info {
         h3 {
           font-size: 1rem;
@@ -123,10 +159,14 @@ const Burguer = styled.div`
         margin-top: 0.8rem;
         padding: 0.8rem 0;
         display: flex;
+
         a {
-          margin: 0px 7px 0 25px;
+          margin: 0px 10px;
           display: block;
           transition: 0.6s transform;
+          ${mediaTo.lg`
+              margin:  0px 7px 0 25px;
+            `}
           &:hover {
             svg {
               fill: ${(props) => props.theme.color.secondary};
@@ -137,6 +177,7 @@ const Burguer = styled.div`
       }
     }
     &-location {
+      display: none;
       position: absolute;
       bottom: -80px;
       color: ${(props) => props.theme.text.default};
@@ -154,6 +195,27 @@ const Burguer = styled.div`
           border-radius: 4px;
         }
       }
+      ${mediaTo.lg`
+        display: block;
+      `}
+    }
+  }
+
+  @keyframes cameraPan {
+    0% {
+      background-position: 0% 0%;
+    }
+    25% {
+      background-position: 30% 10%;
+    }
+    50% {
+      background-position: 0% 10%;
+    }
+    75% {
+      background-position: 10% 40%;
+    }
+    100% {
+      background-position: 0% 0%;
     }
   }
 `;
@@ -288,11 +350,15 @@ export default function HamburguerMenu(props) {
               </div>
               <div className="burguer-location">
                 DO NOT hover places name!
-                <span>San Francisco</span>
-                <span>Lima</span>
-                <span>Lima</span>
-                <span>Lima</span>
-                <span>Lima</span>
+                {cities.map((city) => (
+                  <span
+                    key={city.name}
+                    onMouseEnter={() => handleCity(city.image, cityBg)}
+                    onMouseOut={() => handleCityOff(cityBg)}
+                  >
+                    {city.name}
+                  </span>
+                ))}
               </div>
             </div>
           </div>

@@ -1,13 +1,16 @@
 import React from 'react';
 import Topbar from '../Topbar/index';
 import styled from 'styled-components';
+import { mediaTo } from '../../themes/helpers/breakpoints';
 
 const Container = styled.div`
   font-family: ${(props) => props.theme.font.alterFont};
   position: relative;
-  width: 1280px;
-  min-width: 1280px;
-  margin: 0 auto;
+  ${mediaTo.lg`
+    width: 1280px;
+    min-width: 1280px;
+    margin: 0 auto;
+  `}
 `;
 
 export default function Layout({ children }) {

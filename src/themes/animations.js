@@ -62,3 +62,32 @@ export const handleHoverOff = (target) => {
     ease: 'power1.inOut',
   });
 };
+
+export const handleCity = (city, target) => {
+  gsap.to(target, {
+    duration: 0,
+    background: `url(${city}) center center`,
+  });
+  gsap.to(target, {
+    duration: 0,
+    opacity: 1,
+    ease: 'power3.inOut',
+  });
+  gsap.from(target, {
+    duration: 0.4,
+    skewY: 2,
+    transformOrigin: 'right top',
+  });
+};
+
+export const handleCityOff = (target) => {
+  gsap.to(target, {
+    duration: 0,
+    skewY: 0,
+  });
+  gsap.to(target, {
+    duration: 0.4,
+    opacity: 0,
+    skewY: 0,
+  });
+};
