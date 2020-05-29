@@ -1,0 +1,22 @@
+{
+  "short_name": "Portfolio",
+  "name": "Paul Ccari - Portfolio ",
+  "description": "Personal Portfolio",
+  "start_url": "/?utm_source=pwa",
+  "scope": "/",
+  "display": "fullscreen",
+  "icons": [
+    {
+      "src": "favicon-512.png",
+      "type": "image/png",
+      "sizes": "512*512"
+    },
+    {
+      "src": "favicon-192.png",
+      "type": "image/png",
+      "sizes": "192*192"
+    }
+  ],
+  "theme_color": "#242424",
+  "background_color": "#242424"
+}

@@ -3,6 +3,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const TersetJSPlugin = require('terser-webpack-plugin');
+const FaviconWebPackPlugin = require('favicons-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
@@ -17,9 +19,6 @@ module.exports = {
   optimization: {
     minimizer: [new TersetJSPlugin()],
   },
-  // devServer: {
-  //   historyApiFallback: true,
-  // },
   module: {
     rules: [
       {
@@ -57,7 +56,7 @@ module.exports = {
             options: {
               limit: 8192,
               name: '[name].[ext]',
-              // publicPath: './dist/'
+              // publicPath: './dist/' //disabled for productions
             },
           },
         ],
@@ -66,13 +65,15 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: resolve(__dirname, 'public/index.html'),
+      template: resolve(__dirname, 'src/index.html'),
+      filename: 'index.html'
     }),
-    // new CopyWebpackPlugin([
-    //   { from: 'public' }
-    // ]),
     new CleanWebpackPlugin({
       cleanOnceBeforeBuildPatterns: ['**/app.*'],
     }),
+    new CopyWebpackPlugin([
+      { from: 'public' }
+    ]),
+    new FaviconWebPackPlugin('./public/favicon-32x32.png')
   ],
 };
