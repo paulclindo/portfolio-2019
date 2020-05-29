@@ -76,6 +76,6 @@ module.exports = {
         { from: 'public'}
       ]
     }),
-    new FaviconWebPackPlugin('./public/favicon-32x32.png')
+    new FaviconWebPackPlugin('./public/favicon-512.png')
   ],
 };
