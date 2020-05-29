@@ -71,9 +71,11 @@ module.exports = {
     new CleanWebpackPlugin({
       cleanOnceBeforeBuildPatterns: ['**/app.*'],
     }),
-    new CopyWebpackPlugin([
-      { from: 'public' }
-    ]),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: 'public'}
+      ]
+    }),
     new FaviconWebPackPlugin('./public/favicon-32x32.png')
   ],
 };
