@@ -57,7 +57,7 @@ module.exports = {
             options: {
               limit: 8192,
               name: '[name].[ext]',
-              publicPath: './dist/'
+              // publicPath: './dist/'
             },
           },
         ],
