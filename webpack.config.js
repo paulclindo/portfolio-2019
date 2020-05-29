@@ -65,10 +65,9 @@ module.exports = {
     ],
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       template: './public/index.html',
-      filename: 'index.html',
+      filename: '/index.html',
     }),
     // new CopyWebpackPlugin([
     //   { from: 'public' }

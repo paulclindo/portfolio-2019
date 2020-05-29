@@ -7,7 +7,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "dev": "webpack-dev-server --config ./webpack.dev.js",
-    "build": "webpack --config ./webpack.config.js --mode production"
+    "build": "webpack --config ./webpack.config.js"
   },
   "keywords": [],
   "dependencies": {
