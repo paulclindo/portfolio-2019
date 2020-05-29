@@ -66,8 +66,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './public/index.html',
-      filename: '/index.html',
+      template: resolve(__dirname, 'public/index.html'),
     }),
     // new CopyWebpackPlugin([
     //   { from: 'public' }
