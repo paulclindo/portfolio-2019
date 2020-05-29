@@ -5,7 +5,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const TersetJSPlugin = require('terser-webpack-plugin');
 
 module.exports = {
-  entry: resolve(__dirname, 'src/index.js'),
+  entry: './src/index.js',
   output: {
     path: resolve(__dirname, 'dist'),
     filename: '[name].[hash].js',
