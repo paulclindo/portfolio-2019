@@ -72,7 +72,7 @@ const Topbar = ({ history }) => {
       <div className="container">
         <div className="wrapper">
           <div className="header-inner">
-            <LogoLink to={routes.base}>
+            <LogoLink to={routes.root}>
               {/* <LogoIcon color="#191919" /> */}
               PAUL CCARI.
             </LogoLink>

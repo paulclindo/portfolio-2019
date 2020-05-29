@@ -1,25 +1,25 @@
-const path = require('path');
+const { resolve } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const TersetJSPlugin = require('terser-webpack-plugin');
 
 module.exports = {
-  entry: {
-    app: path.resolve(__dirname, 'src/index.js'),
-  },
+  entry: resolve(__dirname, 'src/index.js'),
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'js/[name].[hash].js',
-    // chunkFilename: 'js/[id].[chunkhash].js',
-    publicPath: '../',
+    path: resolve(__dirname, 'dist'),
+    filename: '[name].[hash].js',
+    publicPath: './',
   },
   resolve: {
-    extensions: ['*', '.js', '.jsx'],
+    // extensions: ['*', '.js', '.jsx'],
   },
   optimization: {
     minimizer: [new TersetJSPlugin()],
   },
+  // devServer: {
+  //   historyApiFallback: true,
+  // },
   module: {
     rules: [
       {
@@ -38,14 +38,26 @@ module.exports = {
         ],
       },
       {
-        test: /\.(jp(e)?g|png|woff(2)?|eot|ttf|svg|mp4|webm|gif|webp)$/,
+        test: /\.(woff(2)?|eot|ttf)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+              name: '[name].[ext]',
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(jp(e)?g|png|svg|mp4|webm|gif|webp)$/,
         use: [
           {
             loader: 'file-loader',
             options: {
               limit: 8192,
               name: '[name].[ext]',
-              outPath: 'assets',
+              publicPath: './dist/'
             },
           },
         ],
@@ -55,9 +67,12 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'public/index.html'),
+      template: './public/index.html',
       filename: 'index.html',
     }),
+    // new CopyWebpackPlugin([
+    //   { from: 'public' }
+    // ]),
     new CleanWebpackPlugin({
       cleanOnceBeforeBuildPatterns: ['**/app.*'],
     }),
