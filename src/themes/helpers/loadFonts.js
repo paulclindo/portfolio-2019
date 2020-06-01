@@ -7,6 +7,24 @@ import FHelveticaNormal700Woff2 from "../../assets/fonts/Helvetica/helveticanowd
 import FSharpSansNormal600Woff2 from "../../assets/fonts/SharpSans/SharpSansNo2-Semibold.woff2";
 import FSharpSansNormal700Woff2 from "../../assets/fonts/SharpSans/SharpSansNo2-Bold.woff2";
 
+// /**    - Acumin -    */
+// import FAcuminNormal400Woff from "../../assets/fonts/Acumin/Acumin-RPro.woff"
+// import FAcuminNormal700Woff from "../../assets/fonts/Acumin/Acumin-BdPro.woff";
+
+// const AcuminNormal400Woff = {
+//   fontFamily: "Acumin Pro",
+//   fontStyle: "normal",
+//   fontWeight: 400,
+//   src: `url('${FAcuminNormal400Woff}') format('woff')`,
+// };
+// const AcuminNormal700Woff = {
+//   fontFamily: "Acumin Pro",
+//   fontStyle: "normal",
+//   fontWeight: 400,
+//   src: `url('${FFAcuminNormal700Woff}') format('woff')`,
+// };
+
+
 const HelveticaNormal400Woff = {
   fontFamily: "Helvetica Now Display",
   fontStyle: "normal",
@@ -45,4 +63,6 @@ export const FONT_LIST = [
   HelveticaNormal700Woff2,
   SharpSansNormal600Woff2,
   SharpSansNormal700Woff2,
+  // AcuminNormal400Woff,
+  // AcuminNormal700Woff
 ];

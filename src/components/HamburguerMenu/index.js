@@ -47,6 +47,7 @@ const Burguer = styled.div`
   right: 0;
   width: 100%;
   height: 100%;
+  font-family: ${(props) => props.theme.font.alterFont};
   .burguer {
     &-secondary-bg {
       position: fixed;
@@ -124,7 +125,7 @@ const Burguer = styled.div`
     }
     &-info {
       width: 100%;
-      font-family: ${(props) => props.theme.font.mainFont};
+      font-family: ${(props) => props.theme.font.testFont};
       font-weight: 100;
       line-height: 1.4;
       letter-spacing: 1px;

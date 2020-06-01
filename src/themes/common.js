@@ -8,10 +8,16 @@ import FHelveticaNormal700Woff2 from '../assets/fonts/Helvetica/helveticanowdisp
 /**    - Sharp Sans -    */
 import FSharpSansNormal600Woff2 from '../assets/fonts/SharpSans/SharpSansNo2-Semibold.woff2';
 import FSharpSansNormal700Woff2 from '../assets/fonts/SharpSans/SharpSansNo2-Bold.woff2';
+/**    - Sharp Sans -    */
+
+import FAcuminNormal400Woff from "../assets/fonts/Acumin/Acumin-RPro.woff"
+import FAcuminNormal700Woff from "../assets/fonts/Acumin/Acumin-BdPro.woff";
+
+
 import { mediaTo } from './helpers/breakpoints';
 
 const FONT_FAMILY = {
-  normal: ["'Helvetica Now Display'", 'sans-serif'].join(', '),
+  normal: ["'Acumin Pro'","'Helvetica Now Display'", 'sans-serif'].join(', '),
 };
 
 const GlobalStyles = createGlobalStyle`
@@ -45,6 +51,22 @@ const GlobalStyles = createGlobalStyle`
     font-weight: 700;
     src: url('${FSharpSansNormal700Woff2}') format('woff2');
   }
+
+  @font-face {
+    font-family: 'Acumin Pro';
+    font-style: normal;
+    font-weight: normal;
+    src: url('${FAcuminNormal400Woff}') format('woff');
+  }
+
+  @font-face {
+    font-family: 'Acumin Pro';
+    font-style: normal;
+    font-weight: bold;
+    src: url('${FAcuminNormal700Woff}') format('woff');
+  }
+
+
   *, *:after, *:before{
   box-sizing: inherit;
   }

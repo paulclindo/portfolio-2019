@@ -19,6 +19,7 @@ const original = {
     base: '14px',
     mainFont: 'Helvetica Now Display',
     alterFont: 'Sharp Sans No2',
+    testFont: 'Acumin Pro'
   },
   text: {
     default: '#FDFDFF',
