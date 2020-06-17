@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import * as routes from '../routes';
 import { IoIosArrowRoundForward } from 'react-icons/io';
@@ -8,6 +8,8 @@ import bgProfile from '../assets/static/bg-profile.svg';
 import { mediaTo } from '../themes/helpers/breakpoints';
 import passion from "../assets/static/passion.jpg"
 import teamwork from "../assets/static/teamwork.jpg"
+import { TimelineLite, Power3, TweenMax } from 'gsap';
+// import { TweenMax, TimelineLite, Power3 } from "gsap";
 
 const GlobalWidth = styled.div`
   /* width: 1280px;
@@ -63,23 +65,23 @@ const HeroContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  visibility: hidden;
   ${mediaTo.lg`
-    /* margin-top: 200px; */
+    /* margin-top: 300px;
+    align-items: flex-start; */
   `}
 `;
 const HeroPhrase = styled.h1`
-  /* font-weight: 300; */
   font-family: ${props => props.theme.font.testFont};
-  /* font-size: 1rem; */
   color: #818181;
   text-transform:uppercase;
-  /* line-height: 2;
-  letter-spacing: 0.4px; */
   font-size: 11px;
-    line-height: 25px;
-    font-weight: 500;
-    letter-spacing: 4px;
+  line-height: 25px;
+  font-weight: 500;
+  letter-spacing: 4px;
   margin-bottom: ${(props) => props.theme.spacing(4)}px;
+  height: 15px;
+  overflow: hidden;
   span {
     font-size: 2rem;
   }
@@ -96,7 +98,8 @@ const HeroCaption = styled.p`
   line-height: 1.2;
   margin: 0;
   margin-bottom: 2rem;
-  
+  height: 115px;
+  overflow: hidden;
   /* span {
     color: ${(props) => props.theme.color.main};
   } */
@@ -111,6 +114,9 @@ const HeroPosition = styled.p`
   margin-bottom: 56px;
   color: #626262;
   font-family: ${(props) => props.theme.font.testFont};
+  height: 22px;
+  overflow: hidden;
+
   span {
     margin: 0 30px;
     margin-left: 0;
@@ -148,6 +154,9 @@ const HeroButton = styled(Link)`
     letter-spacing: .7px;
     text-transform: uppercase;
     font-weight: bold;
+    height: 45px;
+    overflow: hidden;
+
   /* span {
     margin-right: 8px;
   } */
@@ -180,10 +189,47 @@ const HeroButton = styled(Link)`
 }
 `;
 export default function Home() {
+  let imageWrapper = useRef(null)
+  let heroWrapper = useRef(null)
+  let content = useRef(null)
+  let tl = new TimelineLite({ delay: 0.8});
+  
+
+  useEffect(()=>{
+    const firstImg = imageWrapper.firstElementChild;
+    const secondImg = imageWrapper.lastElementChild;
+    console.log({firstImg, secondImg})
+    const caption = content.children[0]
+    const title = caption.nextSibling;
+    const jobTitle = title.nextSibling;
+    const callToAction = jobTitle.nextSibling;
+
+    TweenMax.to(heroWrapper, 10, {
+      css: {
+        visibility: "visible"
+      }
+    })
+    
+    tl.from(firstImg, 0.8, { y: 1280, ease: Power3.easeOut }, "First TL")
+      .from(firstImg.firstElementChild, 2, { scale: 1.6, ease: Power3.easeOut }, 0.2);
+      
+    tl.from(secondImg, 0.9, { y: 1280, ease: Power3.easeOut }, 0.2).from(
+      secondImg.firstElementChild,
+      2,
+      { scale: 1.6, ease: Power3.easeOut},
+      0.2
+    );
+
+    tl.from(caption, 1, { y: 44, opacity: 0, ease: Power3.easeOut }, .9, "First TL")
+      .from(title, 1, { y: 20, opacity: 0, ease: Power3.easeOut }, 1.2)
+      .from(jobTitle, 1, { y: 20, opacity: 0, ease: Power3.easeOut }, 1.6)
+      .from(callToAction, 1, { y: 20, opacity: 0, ease: Power3.easeOut }, 1.8)
+  }, [tl])
+
   return (
     <GlobalWidth>
-      <HeroContainer>
-        <HeroContent>
+      <HeroContainer ref={(el) => heroWrapper = el}>
+        <HeroContent ref={(el) => content = el}>
           <HeroPhrase>Let's Bring Ideas to Life.</HeroPhrase>
           <HeroCaption>
             Creating Unique Digital <span>Experiences</span>.
@@ -198,15 +244,15 @@ export default function Home() {
           </HeroButton>
         </HeroContent>
         <HeroImages>
-          <div className="hero-images-inner">
-            <div className="hero-image design">
-              <img src={passion} alt="designing"/>
-            </div>
+          <div ref={(el) => imageWrapper = el } className="hero-images-inner">
             <div className="hero-image code">
+              {/* <img src={passion} alt="designing"/> */}
+              <img src="https://images.unsplash.com/photo-1514580426463-fd77dc4d0672?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=930&q=80" alt="designing"/>
+            </div>
+            <div className="hero-image design">
               <img src={teamwork} alt="coding"/>
             </div>
           </div>
-          
         </HeroImages>
       </HeroContainer>
     </GlobalWidth>
